@@ -14,4 +14,5 @@ commonLabels:
 
 images:
 - name: gitops-demo
-  newTag: latest
+  newName: nginx
+  newTag: alpine
