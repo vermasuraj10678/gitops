@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-demo
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: gitops-demo
+        env:
+        - name: APP_ENVIRONMENT
+          value: "development"
+        - name: SPRING_PROFILES_ACTIVE
+          value: "dev"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"

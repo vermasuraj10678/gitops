@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: gitops-demo-base
+
+resources:
+- deployment.yaml
+- service.yaml
+
+commonLabels:
+  app: gitops-demo
+  version: v1.0.0
+
+images:
+- name: gitops-demo
+  newTag: latest
