@@ -14,5 +14,5 @@ commonLabels:
 
 images:
 - name: gitops-demo
-  newName: nginx
-  newTag: alpine
+  newName: ghcr.io/vermasuraj10678/gitops/gitops-demo
+  newTag: latest

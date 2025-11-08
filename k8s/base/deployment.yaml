@@ -18,7 +18,7 @@ spec:
       - name: gitops-demo
         image: gitops-demo:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         env:
         - name: APP_ENVIRONMENT
           value: "base"
@@ -33,13 +33,13 @@ spec:
             cpu: "500m"
         livenessProbe:
           httpGet:
-            path: /
-            port: 80
+            path: /actuator/health
+            port: 8080
           initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
           httpGet:
-            path: /
-            port: 80
+            path: /actuator/health
+            port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5
