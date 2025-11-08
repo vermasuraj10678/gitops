@@ -1,25 +1,26 @@
 # Multi-stage build for Spring Boot application
-FROM openjdk:17-jdk-slim AS build
+FROM maven:3.9-openjdk-17-slim AS build
 
 # Set working directory
 WORKDIR /app
 
-# Copy Maven files
+# Copy Maven files first (for better caching)
 COPY app/pom.xml .
-COPY app/.mvn .mvn
-COPY app/mvnw .
 
 # Download dependencies
-RUN ./mvnw dependency:go-offline -B
+RUN mvn dependency:go-offline -B
 
 # Copy source code
 COPY app/src src
 
 # Build the application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Runtime stage
 FROM openjdk:17-jre-slim
+
+# Install curl for health check
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # Create app user for security
 RUN groupadd -r appuser && useradd -r -g appuser appuser
