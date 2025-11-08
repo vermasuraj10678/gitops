@@ -3,14 +3,8 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main ]
-    paths: 
-      - 'app/**'
-      - 'Dockerfile'
   pull_request:
     branches: [ main ]
-    paths:
-      - 'app/**'
-      - 'Dockerfile'
 
 env:
   REGISTRY: ghcr.io
