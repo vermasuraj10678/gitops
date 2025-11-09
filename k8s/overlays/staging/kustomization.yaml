@@ -16,4 +16,5 @@ commonLabels:
 
 images:
 - name: gitops-demo
-  newTag: staging-latest
+  newName: ghcr.io/vermasuraj10678/gitops/gitops-demo
+  newTag: main-02b3ee3
