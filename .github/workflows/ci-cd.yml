@@ -68,11 +68,18 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
     
+    - name: Install Kustomize
+      run: |
+        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+        sudo mv kustomize /usr/local/bin/
+    
     - name: Update Kustomize image tags
       run: |
         # Extract the SHA tag
         NEW_TAG=$(echo "${{ steps.meta.outputs.tags }}" | grep -E "main-[a-f0-9]{7}" | head -n1 | cut -d: -f2)
         IMAGE_WITH_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${NEW_TAG}"
+        
+        echo "Updating image to: $IMAGE_WITH_TAG"
         
         # Update dev overlay
         cd k8s/overlays/dev
