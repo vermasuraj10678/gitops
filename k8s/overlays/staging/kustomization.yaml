@@ -17,4 +17,4 @@ commonLabels:
 images:
 - name: gitops-demo
   newName: ghcr.io/vermasuraj10678/gitops/gitops-demo
-  newTag: main-02b3ee3
+  newTag: main-5a86f24
