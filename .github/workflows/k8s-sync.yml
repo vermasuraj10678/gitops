@@ -1,0 +1,34 @@
+name: K8s Infrastructure Sync
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'k8s/**'
+      - 'argocd-apps/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'k8s/**'
+      - 'argocd-apps/**'
+
+jobs:
+  sync-infrastructure:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Infrastructure Change Notification
+      run: |
+        echo "🏗️ Infrastructure changes detected!"
+        echo "📝 Changed files in this push:"
+        git diff --name-only HEAD~1 HEAD | grep -E '^(k8s|argocd-apps)/' || true
+        echo ""
+        echo "✅ ArgoCD will automatically detect and sync these changes"
+        echo "⏱️ Sync may take up to 3 minutes (ArgoCD polling interval)"
+        echo ""
+        echo "🚀 No application rebuild needed - infrastructure only!"
