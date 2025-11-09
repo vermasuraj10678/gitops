@@ -40,7 +40,7 @@ public class AppController {
     public Map<String, Object> info() {
         Map<String, Object> response = new HashMap<>();
         response.put("application", "GitOps Demo");
-        response.put("description", "Testing CI/CD pipeline with GitOps");
+        response.put("description", "Testing CI/CD pipeline with GitOps.");
         response.put("environment", environment);
         response.put("version", version);
         response.put("buildTime", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
