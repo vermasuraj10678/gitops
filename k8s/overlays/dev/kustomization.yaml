@@ -12,8 +12,8 @@ patchesStrategicMerge:
 - deployment-patch.yaml
 - quarkus-deployment-patch.yaml
 
-commonLabels:
-  environment: dev
+# Note: commonLabels removed to avoid mutating deployment selectors
+# Environment labels are added via patches instead
 
 images:
 - name: gitops-demo

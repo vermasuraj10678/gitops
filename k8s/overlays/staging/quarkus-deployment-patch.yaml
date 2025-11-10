@@ -2,9 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: quarkus-demo
+  labels:
+    environment: staging
 spec:
   replicas: 2
   template:
+    metadata:
+      labels:
+        environment: staging
     spec:
       containers:
       - name: quarkus-demo

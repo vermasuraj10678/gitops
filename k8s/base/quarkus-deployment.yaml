@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: quarkus-demo
-        image: ghcr.io/vermasuraj10678/quarkus-application:latest
+        image: quarkus-application:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

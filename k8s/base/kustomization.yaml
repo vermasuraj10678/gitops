@@ -18,3 +18,6 @@ images:
 - name: gitops-demo
   newName: ghcr.io/vermasuraj10678/gitops/gitops-demo
   newTag: latest
+- name: quarkus-application
+  newName: ghcr.io/vermasuraj10678/quarkus-application
+  newTag: latest
