@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-demo
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: quarkus-demo
+        env:
+        - name: APP_ENVIRONMENT
+          value: "development"
+        - name: GREETING_MESSAGE
+          value: "Hello from Dev Quarkus!"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "96Mi"
+            cpu: "200m"

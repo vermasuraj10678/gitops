@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-demo
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+      - name: quarkus-demo
+        env:
+        - name: APP_ENVIRONMENT
+          value: "staging"
+        - name: GREETING_MESSAGE
+          value: "Hello from Staging Quarkus!"
+        resources:
+          requests:
+            memory: "96Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
